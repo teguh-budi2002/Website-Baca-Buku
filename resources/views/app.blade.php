@@ -30,7 +30,7 @@
         <div class="w-full flex justify-center py-8">
             <div class="w-2/3 flex items-center space-x-4">
                 <img src="https://source.unsplash.com/random/?city,night" class="w-28 h-12" alt="logo_web">
-                <p class="text-teal-800 text-4xl font-bold tracking-widest uppercase">SEKOLAHKLG</p>
+                <p class="text-teal-800 text-4xl font-bold tracking-widest uppercase">Kampung Lali Gadget</p>
             </div>
         </div>
     </header>
@@ -56,9 +56,9 @@
         </div>
     </nav>
     <div class="carousel__main">
-        <div class="carousel w-full max-h-[500px]">
+        <div class="carousel w-full max-h-[600px]">
             <div id="slide1" class="carousel-item relative w-full">
-                <img src="https://source.unsplash.com/random/?city,night" class="w-full" />
+                <img src="{{ asset('img/Slider Image/img_slider1.jpeg') }}" class="w-full" />
                 <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide4" class="btn btn-circle">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div id="slide2" class="carousel-item relative w-full">
-                <img src="https://source.unsplash.com/random/?city,night" class="w-full" />
+                <img src="{{ asset('img/Slider Image/img_slider2.jpeg') }}" class="w-full" />
                 <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide1" class="btn btn-circle">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div id="slide3" class="carousel-item relative w-full">
-                <img src="https://source.unsplash.com/random/?city,night" class="w-full" />
+                <img src="{{ asset('img/Slider Image/img_slider3.jpeg') }}" class="w-full" />
                 <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide2" class="btn btn-circle">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -103,6 +103,23 @@
                         </svg>
                     </a>
                     <a href="#slide4" class="btn btn-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div id="slide4" class="carousel-item relative w-full">
+                <img src="{{ asset('img/Slider Image/img_slider4.jpeg') }}" class="w-full" />
+                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                    <a href="#slide3" class="btn btn-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                        </svg>
+                    </a>
+                    <a href="#slide1" class="btn btn-circle">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -119,7 +136,7 @@
         <div class="upper_footer text-center w-full h-auto">
             <div class="p-1 flex justify-center">
                 <div class="w-2/4">
-                    <img src="https://source.unsplash.com/user/wsanter" class="w-28 h-28 rounded-full mx-auto border-4 border-solid border-blue-500" alt="profile_img">
+                    <img src="{{ asset('img/direktur_sma_img.jpeg') }}" class="w-28 h-28 rounded-full mx-auto border-4 border-solid border-blue-500" alt="profile_img">
                     <p class="mt-8 text-slate-500 font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse atque ab non tempore expedita doloremque, molestias iste sit impedit veniam officia eveniet labore aperiam nemo blanditiis voluptates temporibus reprehenderit in! Dicta, nam dolore dolorum dolorem velit quaerat aspernatur autem quo! Ad eligendi in magnam. Itaque dolorum similique provident unde aspernatur modi animi doloribus, voluptatem laborum doloremque nostrum, magnam, accusantium quae a ducimus sequi aut illum debitis reiciendis voluptas. Alias distinctio vero nihil in ducimus rem non exercitationem? Soluta praesentium vitae quas voluptate quaerat cum sunt, at qui esse suscipit nisi optio iste modi, quae rerum laborum. Non quos temporibus tempora.</p>
                     <div class="w-2/5 mx-auto border border-slate-300 border-solid mt-8"></div>
                     <div class="detail_name">

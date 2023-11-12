@@ -191,7 +191,7 @@
                             <li>
                                 <form action="{{ URL('/logout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="dropdown-item" href="#">Logout</button>
+                                    <button type="submit" class="dropdown-item">Logout</button>
                                 </form>
                             </li>
                         </ul>

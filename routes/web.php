@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -17,9 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home'); 
-Route::get('/baca-buku/{slug}', [HomeController::class, 'readBook'])->name('read.book'); 
+Route::get('/baca-buku/{slug}', [HomeController::class, 'readBook'])->name('read.book');
 
-Route::group(['prefix'=> 'dashboard'], function () {
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('login/process', [AuthController::class, 'loginProcess'])->name('login.process');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware(['canAcessDashboard'])->prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
     Route::get('/publish-book', [DashboardController::class, 'publishSomeBook']);
     Route::post('/publish-book/add', [BookController::class, 'addBook'])->name('add.book');
