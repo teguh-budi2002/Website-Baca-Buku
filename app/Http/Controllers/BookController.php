@@ -92,12 +92,15 @@ class BookController extends Controller
                 }
             }
 
+            $validation['link_yt_vid'] = str_replace('watch?v=','embed/', $request->link_yt_vid);
+            $validation['link_yt_vid'] = preg_replace('/&t=\d+s/', '', $validation['video']);
+            // 
             Chapter::create([
                 "book_id" => $id,
                 "sub_title_of_chapter" => $request->input("sub_title_of_chapter"),
                 "content_of_chapter"   => $request->input("content_of_chapter"),
                 "image_chapter"        => json_encode($dataImage),
-                "link_yt_vid"          => str_replace('watch?v=','embed/', $request->link_yt_vid)
+                "link_yt_vid"          => $validation['link_yt_vid'] 
             ]);
             $bookName = Book::select("id", "title")->where("id", $id)->first();
             DB::commit();

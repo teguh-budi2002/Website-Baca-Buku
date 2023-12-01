@@ -20,6 +20,7 @@
     {{-- WYSIWYG --}}
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    @stack('lib')
     @stack('css')
     <style>
         *,html,body {
@@ -157,6 +158,11 @@
                         class="list-group-item list-group-item-action py-2 ripple {{ Request::is('dashboard/publish-book*') ? 'active' : '' }}">
                         <i class="fa-solid fa-book fa-xs me-2"></i>
                         <span style="font-size: 13px">Terbitkan Buku</span>
+                    </a>
+                    <a href="{{ Route('manage.banner') }}"
+                        class="list-group-item list-group-item-action py-2 ripple {{ Request::is('dashboard/banner*') ? 'active' : '' }}">
+                        <i class="fa-solid fa-image fa-xs me-2"></i>
+                        <span style="font-size: 13px">Banner</span>
                     </a>
                 </div>
             </div>

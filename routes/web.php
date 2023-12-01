@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -35,4 +36,7 @@ Route::middleware(['canAcessDashboard'])->prefix('dashboard')->group(function ()
     Route::get('/chapter/edit-chapter/{chapter_id}', [BookController::class, 'editChapter'])->name('edit.chapter');
     Route::post('/add-chapter/save/{id}', [BookController::class,'saveChapter'])->name('save.chapter');
     Route::patch('/edit-chapter/save/{id}', [BookController::class,'saveEditChapter'])->name('edit.save.chapter');
+
+    Route::get('banner', [BannerController::class, 'manageBanner'])->name('manage.banner');
+    Route::post('upload-banner', [BannerController::class, 'uploadBanner'])->name('upload.banner');
 });
