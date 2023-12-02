@@ -32,7 +32,10 @@ class HomeController extends Controller
     public function readBook($slug) {
         $bookWantToRead = Book::with('chapters')->where("slug", $slug)->first();
 
-        return view("ReadBook", [ 'book' => $bookWantToRead]);
+        return view("ReadBook", [
+            'book' => $bookWantToRead,
+            'banners' => $this->bannerImg ? [$this->bannerImg] : []
+        ]);
     }
 
     protected static function searchBook($input_search, $category_id, $for_age) { 

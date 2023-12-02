@@ -93,8 +93,8 @@ class BookController extends Controller
             }
 
             $validation['link_yt_vid'] = str_replace('watch?v=','embed/', $request->link_yt_vid);
-            $validation['link_yt_vid'] = preg_replace('/&t=\d+s/', '', $validation['video']);
-            // 
+            $validation['link_yt_vid'] = preg_replace('/&t=\d+s/', '', $validation['link_yt_vid']);
+            
             Chapter::create([
                 "book_id" => $id,
                 "sub_title_of_chapter" => $request->input("sub_title_of_chapter"),
@@ -139,11 +139,14 @@ class BookController extends Controller
                 }
             }
 
+            $validation['link_yt_vid'] = str_replace('watch?v=','embed/', $request->link_yt_vid);
+            $validation['link_yt_vid'] = preg_replace('/&t=\d+s/', '', $validation['link_yt_vid']);
+
             $chapter = Chapter::where('id', $id)->update([
                 "sub_title_of_chapter" => $request->input("sub_title_of_chapter"),
                 "content_of_chapter"   => $request->input("content_of_chapter"),
                 "image_chapter"        => json_encode($dataImage),
-                "link_yt_vid"          => str_replace('watch?v=','embed/', $request->link_yt_vid)
+                "link_yt_vid"          => $validation['link_yt_vid']
             ]);
             DB::commit();
 
