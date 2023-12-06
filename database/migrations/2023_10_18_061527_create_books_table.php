@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->references('id')->on('categories')->constrained()->cascadeOnDelete();
+            // $table->foreignId('category_id')->references('id')->on('categories')->constrained()->cascadeOnDelete();
             $table->string('image_book');
             $table->string('title');
             $table->string('slug');
-            $table->enum('for_age', ['6 Tahun','12 Tahun', '18 Tahun']);
-            $table->integer('visited_count')->nullable();
-            $table->integer('downloaded_count')->nullable();
+            $table->longText('description');
+            $table->string('link_yt_vid')->nullable();
+            // $table->enum('for_age', ['6 Tahun','12 Tahun', '18 Tahun']);
+            // $table->integer('visited_count')->nullable();
+            // $table->integer('downloaded_count')->nullable();
             $table->boolean('is_published')->default(0);
             $table->timestamps();
         });

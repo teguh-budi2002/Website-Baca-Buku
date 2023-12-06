@@ -12,6 +12,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    {{-- Swiper JS --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <style>
         *,
         html,
@@ -20,145 +24,186 @@
             margin: 0;
             box-sizing: border-box;
             font-family: 'Roboto Condensed', sans-serif;
+            scroll-behavior: smooth;
+            /* font-style: normal !important; */
+        }
+        /* Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
 
+        .no-scrollbar {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        /* CSS RESET */
+        .image {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .image_resized {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .body_description > ul,
+        .body_description > ul li {
+            list-style-type: disc;
+        }
+
+        .body_description ul {
+            padding-left: 40px;
+        }
+
+        .body_description > ol,
+        .body_description > ol li {
+            list-style-type: decimal;
+        }
+
+        .body_description ol {
+            padding-left: 40px;
+        }
+
+        .body_description > h1 {
+            display: block;
+            font-size: 2em;
+            margin-top: 0.67em;
+            margin-bottom: 0.67em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+        }
+
+        .body_description > h2 {
+            display: block;
+            font-size: 1.5em;
+            margin-top: 0.83em;
+            margin-bottom: 0.83em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+        }
+
+        .body_description > h3 {
+            display: block;
+            font-size: 1.17em;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+        }
+
+        .body_description > h4 {
+            display: block;
+            margin-top: 1.33em;
+            margin-bottom: 1.33em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+        }
+
+        .body_description > h5 {
+            display: block;
+            font-size: 0.83em;
+            margin-top: 1.67em;
+            margin-bottom: 1.67em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+        }
+
+        .body_description > h6 {
+            display: block;
+            font-size: 0.67em;
+            margin-top: 2.33em;
+            margin-bottom: 2.33em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="w-full flex justify-center py-8">
-            <div class="w-2/3 flex items-center space-x-4">
-                <img src="https://source.unsplash.com/random/?city,night" class="w-28 h-12" alt="logo_web">
-                <p class="text-teal-800 text-4xl font-bold tracking-widest uppercase">Kampung Lali Gadget</p>
-            </div>
-        </div>
-    </header>
+    <div class="w-full flex justify-center py-2"></div>
     <nav>
-        <div class="py-2.5 bg-green-800 flex justify-center">
-            <div class="item_navbar w-full flex justify-center text-white text-sm">
-                <div class="w-2/3 space-x-10">
-                    <details class="dropdown">
-                        <summary class="m-1 cursor-pointer">Kategori</summary>
-                        <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded w-52">
+        <div class="w-full py-2.5 px-10 bg-green-800">
+            <div class="item_navbar w-full flex justify-between items-center text-white text-sm">
+                <div class="flex items-center space-x-4">
+                    <img src="https://source.unsplash.com/random/?city,night" class="w-28 h-12" alt="logo_web">
+                    <p class="text-white text-3xl font-bold tracking-[10px] uppercase">SEKOLAHKLG</p>
+                </div>
+                <div class=" space-x-10">
+                    <a href="{{ URL('/') }}">Beranda</a>
+                    <a href="#listBooks">Buku</a>
+                    {{-- <details class="dropdown">
+                        <summary class="m-1 cursor-pointer">Buku</summary>
+                        <ul class="p-2 shadow menu dropdown-content z-[10] bg-base-100 rounded w-52">
                             <li>
-                                <a class="text-slate-600">E-Modul</a>
+                                <a href="" class="text-slate-600">E-Modul</a>
                             </li>
                             <li>
-                                <a class="text-slate-600">Pendidikan</a>
+                                <a href="" class="text-slate-600">Pendidikan</a>
                             </li>
                         </ul>
-                    </details>
-                    <a href="/">Beranda</a>
-                    <a class="">Hubungi Kami</a>
+                    </details> --}}
+                    <a href="https://wa.me/" class="">Hubungi Kami</a>
                 </div>
             </div>
         </div>
     </nav>
-    <div class="carousel__main">
-        <div class="carousel w-full max-h-[600px]">
-            @if (!empty($banners))
-                @foreach ($banners as $banner)
-                    @foreach($banner->img_banner as $image)
-                    <div id="slide{{ $loop->index }}" class="carousel-item relative w-full">
-                        <img src="{{ asset('/storage/banner-image/' . $image) }}" class="w-full" alt="{{ $image }}">
-                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href="#slide{{ $loop->index - 1 }}" class="btn btn-circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                    stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                                </svg>
-
-                            </a>
-                            <a href="#slide{{ $loop->index + 1}}" class="btn btn-circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                    stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                </svg>
-                            </a>
-                        </div>
+    <div class="carousel__main mt-5">
+        <div class="w-full flex justify-center">
+            <div class="w-11/12 p-2">
+                <div class="swiper relative">
+                    <div class="swiper-wrapper">
+                        @if (!empty($banners))
+                        @foreach ($banners as $banner)
+                            @foreach ($banner->img_banner as $image)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('/storage/banner-image/' . $image) }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg" alt="">
+                                </div>
+                            @endforeach
+                        @endforeach
+                        @else
+                            <div class="swiper-slide">
+                                <img src="{{ asset('img/Slider Image/img_slider1.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('img/Slider Image/img_slider2.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('img/Slider Image/img_slider3.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('img/Slider Image/img_slider4.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg" alt="">
+                            </div>
+                        @endif
                     </div>
-                    @endforeach
-                @endforeach
-            @else
-                <div id="slide1" class="carousel-item relative w-full">
-                    <img src="{{ asset('img/Slider Image/img_slider1.jpeg') }}" class="w-full" />
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide4" class="btn btn-circle">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                            </svg>
-
-                        </a>
-                        <a href="#slide2" class="btn btn-circle">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                            </svg>
-
-                        </a>
+                    <div class="custom_btn absolute bottom-[10%] -translate-x-1/2 left-1/2 z-50">
+                        <a href="#listBooks" class="py-3 px-20 bg-green-800/60 hover:bg-green-600/60 transition-colors duration-150 rounded-md text-white">Daftar Buku</a>
                     </div>
+                    {{-- <div class="swiper-pagination"></div> --}}
+        
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-scrollbar"></div>
                 </div>
-                <div id="slide2" class="carousel-item relative w-full">
-                    <img src="{{ asset('img/Slider Image/img_slider2.jpeg') }}" class="w-full" />
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide1" class="btn btn-circle">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                            </svg>
-                        </a>
-                        <a href="#slide3" class="btn btn-circle">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div id="slide3" class="carousel-item relative w-full">
-                    <img src="{{ asset('img/Slider Image/img_slider3.jpeg') }}" class="w-full" />
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide2" class="btn btn-circle">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                            </svg>
-                        </a>
-                        <a href="#slide4" class="btn btn-circle">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div id="slide4" class="carousel-item relative w-full">
-                    <img src="{{ asset('img/Slider Image/img_slider4.jpeg') }}" class="w-full" />
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide3" class="btn btn-circle">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                            </svg>
-                        </a>
-                        <a href="#slide1" class="btn btn-circle">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            @endif
+            </div>
         </div>
     </div>
     <main class="w-full h-full min-h-screen">
         @yield('content')
     </main>
     <footer>
-        <div class="upper_footer text-center w-full h-auto">
+        {{-- <div class="upper_footer text-center w-full h-auto">
             <div class="p-1 flex justify-center">
                 <div class="w-2/4">
                     <img src="{{ asset('img/direktur_sma_img.jpeg') }}" class="w-28 h-28 rounded-full mx-auto border-4 border-solid border-blue-500" alt="profile_img">
@@ -170,33 +215,72 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="bottom_footer border-t-2 border-blue-500 border-solid mt-5 bg-slate-100">
+        </div> --}}
+        <div class="bottom_footer mt-5 bg-green-800">
             <div class="flex justify-center">
-                <div class="w-2/3 h-auto p-8">
-                    <img src="https://source.unsplash.com/random/?city,night" class="w-28 h-10" alt="logo">
-                    <div class="description text-slate-500 font-light text-sm space-y-6 mt-10">
-                        <p class="">
-                            <i class="fa-solid fa-city mr-4"></i>
-                            Kampung Lali Gadget
-                        </p>
-                        <a href="https://wa.me/+62217694140" class="tracking-widest block">
-                            <i class="fa-solid fa-phone mr-4"></i>
-                            +62 21-7694140
-                        </a>
-                        <p class="">
-                            <i class="fa-regular fa-clock mr-4"></i>
-                            Pelayanan Senin-Jumat pukul 08:00 - 16:00 WIB
-                        </p>
-                        <a href="mailto:iniklg@gmail.com" class="block">
-                            <i class="fa-regular fa-envelope mr-4"></i>
-                            <span class="text-blue-400">iniklg@gmail.com</span>
-                        </a>
+                <div class="w-full h-auto p-8">
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="w-full h-full px-28">
+                            <img src="https://source.unsplash.com/random/?city,night" class="w-28 h-10" alt="logo">
+                            <div class="description font-light text-base space-y-4 mt-6 text-white not-italic">
+                                <p class="">
+                                    <i class="fa-solid fa-city mr-4"></i>
+                                    Kampung Lali Gadget
+                                </p>
+                                <a href="https://wa.me/+62217694140" class="tracking-widest block">
+                                    <i class="fa-solid fa-phone mr-4"></i>
+                                    +62 21-7694140
+                                </a>
+                                <p class="">
+                                    <i class="fa-regular fa-clock mr-4"></i>
+                                    Pelayanan Senin-Jumat pukul 08:00 - 16:00 WIB
+                                </p>
+                                <a href="mailto::iniklg@gmail.com" class="block">
+                                    <i class="fa-regular fa-envelope mr-4"></i>
+                                    <span>iniklg@gmail.com</span>
+                                </a>
+                            </div>
+                            <div class="flex items-center space-x-4 mt-5">
+                                <a href="">
+                                    <img src="{{ asset('img/icons/facebook.webp') }}" class="w-6 h-6" alt="fb icon">
+                                </a>
+                                <a href="">
+                                    <img src="{{ asset('img/icons/twitter.webp') }}" class="w-6 h-6" alt="twt icoon">
+                                </a>
+                                <a href="">
+                                    <img src="{{ asset('img/icons/youtube.webp') }}" class="w-6 h-6" alt="yt icon">
+                                </a>
+                                <a href="">
+                                    <img src="{{ asset('img/icons/instagram.webp') }}" class="w-6 h-6" alt="ig icon">
+                                </a>
+                            </div>
+                        </div>
+                         <div class="embed__maps">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.423870514181!2d112.61303579999999!3d-7.418252299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7809c167a434af%3A0xc06462924a4e3080!2sKampung%20Lali%20Gadget!5e0!3m2!1sid!2sid!4v1701693847290!5m2!1sid!2sid" class="rounded-md" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                pauseOnMouseEnter: true,
+            },
+            grabCursor: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        })
+        swiper.slideNext();
+    </script>
 </body>
 
 </html>

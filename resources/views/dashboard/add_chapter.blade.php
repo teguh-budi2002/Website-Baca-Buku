@@ -49,7 +49,7 @@
                         <span style="font-size: 13px">{{ $message }}</span>
                     </div>
                     @enderror
-                    <div class="choice__media__upload d-flex align-items-center">
+                    {{-- <div class="choice__media__upload d-flex align-items-center">
                         <button class="btn btn-info" type="button" data-mdb-toggle="collapse"
                             data-mdb-target="#uploadImage" aria-expanded="false" aria-controls="uploadImage">
                             Upload Image
@@ -75,7 +75,7 @@
                             <p style="margin: 5px">Preview Image</p>
                             <div class="preview-images-zone"></div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="btn_submit mt-3">
                         <button type="submit" class="btn btn-primary">Simpan Bagian</button>
                     </div>

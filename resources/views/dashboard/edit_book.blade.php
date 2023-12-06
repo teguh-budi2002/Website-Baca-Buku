@@ -14,8 +14,9 @@
                 </p>
             </div>
             <div class="card-body">
-                <form action="{{ Route('add.book') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ Route('edit.book.process', ['bookId' => $book]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PATCH')
                     <div class="mt-2 mb-4">
                         @error('image_book')
                         <div class="alert alert-danger" style="padding: 5px; padding-left: 10px" role="alert">
@@ -23,7 +24,10 @@
                         </div>
                         @enderror
                         <label class="form-label" for="image_book">Cover Buku</label>
-                        <input type="file" name="image_book" class="form-control" id="image_book" />
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('/storage/poster-buku/' . $book->image_book) }}" class="w-full h-full img-fluid" style="max-height: 400px;" alt="image book">
+                        </div>
+                        <input type="file" name="image_book" class="form-control mt-3" value="{{ $book->image_book }}" id="image_book" />
                     </div>
                     @error('title')
                     <div class="alert alert-danger" style="padding: 5px; padding-left: 10px" role="alert">
@@ -32,49 +36,22 @@
                     @enderror
                     <div class="form-group mb-4">
                         <label class="form-label" for="book_title">Judul Buku</label>
-                        <input type="text" name="title" placeholder="Masukkan Judul Buku..." id="book_title" value="{{ old('title') }}" class="form-control" />
+                        <input type="text" name="title" id="book_title" value="{{ old('title', $book->title) }}" class="form-control" />
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label" for="book_description">Deskripsi Buku</label>
-                        <textarea name="description" id="book_description" class="form-control">{{ old('description') }}</textarea>
+                        <textarea name="description" id="book_description" class="form-control">{{ old('description', $book->description) }}</textarea>
                     </div>
                     <div class="upload_link_yt" id="uploadYT">
                         <div class="form-group mb-4">
                             <label class="form-label" for="link_yt">Link YT Video <span class="text-primary">(Opsional)</span></label>
-                            <input type="text" name="link_yt_vid" id="link_yt" value="{{ old('link_yt_vid') }}"
+                            <input type="text" name="link_yt_vid" id="link_yt" value="{{ old('link_yt_vid', $book->link_yt_vid) }}"
                                 class="form-control" />
                         </div>
                     </div>
-                    {{-- <div class="row">
-                        <div class="col-md-6">
-                            @error('for_age')
-                            <div class="alert alert-danger" style="padding: 5px; padding-left: 10px" role="alert">
-                                <span style="font-size: 13px">{{ $message }}</span>
-                            </div>
-                            @enderror
-                            <select class="form-select" name="for_age" aria-label="Default select example">
-                                <option selected disabled>Rentan Umur</option>
-                                <option value="6 Tahun">6 Tahun</option>
-                                <option value="12 Tahun">12 Tahun</option>
-                                <option value="18 Tahun">18 Tahun</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            @error('category_id')
-                            <div class="alert alert-danger" style="padding: 5px; padding-left: 10px" role="alert">
-                                <span style="font-size: 13px">{{ $message }}</span>
-                            </div>
-                            @enderror
-                            <select class="form-select" name="category_id" aria-label="Default select example">
-                                <option selected disabled>Kategori Buku</option>
-                                @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div> --}}
+                    <input type="hidden" name="old_image_book" value="{{ $book->image_book }}">
                     <div class="mt-4">
-                        <button type="submit" class="btn btn-info">Simpan Buku</button>
+                        <button type="submit" class="btn btn-info">Edit Buku</button>
                     </div>
                 </form>
             </div>

@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chapters', function (Blueprint $table) {
+        Schema::create('profile_websites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('book_id')->references('id')->on('books');
-            $table->string('sub_title_of_chapter');
-            $table->longText('content_of_chapter');
-            $table->string('image_chapter')->nullable();
-            // $table->string('link_yt_vid')->nullable();
+            $table->string('main_image');
+            $table->text('website_description');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chapters');
+        Schema::dropIfExists('profile_websites');
     }
 };

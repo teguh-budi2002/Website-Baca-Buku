@@ -14,14 +14,18 @@ class BookController extends Controller
     public function addBook(Request $request) {
         $validation = $request->validate([
             "title" => "required",
-            "for_age" => "required",
-            "category_id" => "required",
+            // "for_age" => "required",
+            // "category_id" => "required",
             "image_book" => "required|image",
+            "description" => "required",
+            'link_yt_vid' => 'nullable|url',
         ], [
             'title.required' => 'Judul Buku Harus Diisi',
-            'for_age.required' => 'Tentukan Rentan Umur Dari Sebuah Buku',
-            'category_id.required' => 'Pilih Salah Satu Dari Kategori Buku.',
+            // 'for_age.required' => 'Tentukan Rentan Umur Dari Sebuah Buku',
+            // 'category_id.required' => 'Pilih Salah Satu Dari Kategori Buku.',
             'image_book.required' => 'Buku Harus Memiliki Poster atau Gambar',
+            'description.required' => 'Deskripsi Buku Harus Diisi',
+            'link_yt_vid.url' => 'Link YT Harus Berupa Format URL'
         ]);
 
         DB::beginTransaction();
@@ -33,16 +37,74 @@ class BookController extends Controller
                 $putIntoStorage = Storage::disk("public")->putFileAs("/poster-buku/", $file, $filename);
             }
 
+            $convertYtURL = str_replace('watch?v=','embed/', $request->link_yt_vid);
+            $convertYtURL = preg_replace('/&t=\d+s/', '', $convertYtURL);
+
             $book = Book::create([
                 "title" => $request->title,
                 "slug"  => Str::slug($request->title),
-                "category_id" => $request->category_id,
-                "for_age" => $request->for_age,
+                // "category_id" => $request->category_id,
+                // "for_age" => $request->for_age,
                 "image_book"=> $filename,
+                "description" => $request->description,
+                'link_yt_vid' => $convertYtURL
             ]);
 
             DB::commit();
             toastr()->success('Buku Berhasil Disimpan.', 'SUKSES');
+            return redirect('dashboard');
+        } catch (\Throwable $th) {
+            DB::rollback();
+
+            toastr()->error($th->getMessage(), "ERROR SERVERSIDE");
+            return redirect()->back();
+        }
+    }
+
+    public function editBook($bookId) { 
+        $book = Book::whereId($bookId)->first();
+        return view('dashboard.edit_book', [
+            'book' => $book
+        ]);
+    }
+
+    public function editBookProcess(Request $request, $bookId) { 
+        $validation = $request->validate([
+            "title" => "required",
+            "image_book" => "image",
+            "description" => "required",
+            'link_yt_vid' => 'nullable|url',
+        ], [
+            'title.required' => 'Judul Buku Harus Diisi',
+            'image_book.required' => 'Buku Harus Memiliki Poster atau Gambar',
+            'description.required' => 'Deskripsi Buku Harus Diisi',
+            'link_yt_vid.url' => 'Link YT Harus Berupa Format URL'
+        ]);
+
+        DB::beginTransaction();
+        try {
+            if ($request->file("image_book")) {
+                $file = $request->file("image_book");
+                $filename = $file->getClientOriginalName();
+    
+                $putIntoStorage = Storage::disk("public")->putFileAs("/poster-buku/", $file, $filename);
+            }
+
+            $convertYtURL = str_replace('watch?v=','embed/', $request->link_yt_vid);
+            $convertYtURL = preg_replace('/&t=\d+s/', '', $convertYtURL);
+
+            $book = Book::whereId($bookId)->update([
+                "title" => $request->title,
+                "slug"  => Str::slug($request->title),
+                // "category_id" => $request->category_id,
+                // "for_age" => $request->for_age,
+                "image_book"=> $request->file('image_book') ? $filename : $request->old_image_book,
+                "description" => $request->description,
+                'link_yt_vid' => $convertYtURL
+            ]);
+
+            DB::commit();
+            toastr()->success('Buku Berhasil Di Edit.', 'SUKSES');
             return redirect('dashboard');
         } catch (\Throwable $th) {
             DB::rollback();
@@ -70,13 +132,13 @@ class BookController extends Controller
         $validation = $request->validate([ 
             'sub_title_of_chapter' => 'required',
             'content_of_chapter'   => 'required',
-            'image_chapter'        => 'nullable',
-            'link_yt_vid'          => 'nullable|url',
+            // 'image_chapter'        => 'nullable',
+            // 'link_yt_vid'          => 'nullable|url',
         ], [
             'sub_title_of_chapter.required' => 'Judul Bagian Harus Diiisi',
             'content_of_chapter.required'   => 'Isi Dari Bagian Harus Diisi',
             // 'image_chapter.image'           => 'Berkas Yang Di Upload Harus Berupa Image'
-            'link_yt_vid.url'               => 'Link YT Harus Berupa Format URL'
+            // 'link_yt_vid.url'               => 'Link YT Harus Berupa Format URL'
         ]);
 
         DB::beginTransaction();

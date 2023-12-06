@@ -13,9 +13,9 @@
                         <tr>
                             <th>Poster Buku</th>
                             <th>Judul Buku</th>
-                            <th>Kategori</th>
+                            {{-- <th>Kategori</th> --}}
+                            <th>Deskripsi Buku</th>
                             <th>Jumlah BAB</th>
-                            <th>Rentan Umur</th>
                             <th>Status Publish</th>
                             <th>Actions</th>
                         </tr>
@@ -35,9 +35,12 @@
                             <td>
                                 <p class="fw-normal">{{ $book->title }}</p>
                             </td>
-                            <td>
+                            {{-- <td>
                                 <button type="button"
                                     class="btn btn-primary">{{ $book->category->category_name }}</button>
+                            </td> --}}
+                            <td>
+                                <p class="fw-normal">{!! Illuminate\Support\Str::limit($book->description, 20, '...') !!}</p>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-outline-primary opacity-50" data-mdb-toggle="modal"
@@ -91,9 +94,6 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="fw-normal">{{ $book->for_age }}</p>
-                            </td>
-                            <td>
                                 <button type="button"
                                     class="btn btn-{{ $book->is_published ? 'success' : 'danger' }}">{{ $book->is_published ? 'PUBLISHED' : 'DRAFT' }}</button>
                             </td>
@@ -110,8 +110,13 @@
                                                     method="POST">
                                                     @csrf
                                                     <button type="submit"
-                                                        class="btn btn-sm btn-success opacity-50">Publish Buku</button>
+                                                        class="btn btn-sm btn-success opacity-50" style="width: 100%">Publish Buku</button>
                                                 </form>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="text-center p-2">
+                                                <a href="{{ Route('edit.book', ['bookId' => $book->id]) }}" class="btn btn-sm btn-warning opacity-50" style="width: 100%">Edit Buku</a>
                                             </div>
                                         </li>
                                         <li>
@@ -126,7 +131,7 @@
                                             <div class="text-center p-2">
                                                 <button type="button" data-mdb-toggle="modal"
                                                     data-mdb-target="#deleteModalBAB{{ $book->id }}"
-                                                    class="btn btn-sm btn-danger opacity-50">Hapus Buku</button>
+                                                    class="btn btn-sm btn-danger opacity-50" style="width: 100%">Hapus Buku</button>
                                             </div>
                                         </li>
                                     </ul>

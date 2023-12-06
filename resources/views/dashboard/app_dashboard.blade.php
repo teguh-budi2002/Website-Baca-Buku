@@ -154,6 +154,12 @@
                         <i class="fas fa-tachometer-alt fa-xs me-2"></i>
                         <span style="font-size: 13px">Main</span>
                     </a>
+                    <a href="{{ Route('manage.profile.website') }}"
+                        class="list-group-item list-group-item-action py-2 ripple {{ Request::is('dashboard/chapter/*') ? 'active' : '' }}"
+                        aria-current="true">
+                        <i class="fas fa-globe fa-xs me-2"></i>
+                        <span style="font-size: 13px">Profile Website</span>
+                    </a>
                     <a href="{{ URL('dashboard/publish-book') }}"
                         class="list-group-item list-group-item-action py-2 ripple {{ Request::is('dashboard/publish-book*') ? 'active' : '' }}">
                         <i class="fa-solid fa-book fa-xs me-2"></i>
