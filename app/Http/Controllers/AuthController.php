@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+
+    protected $redirectTo = '/admin';
+    
     public function login() {
         return view("Login");
     }

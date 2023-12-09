@@ -137,7 +137,7 @@
         <div class="w-full py-2.5 px-10 bg-green-800">
             <div class="item_navbar w-full flex justify-between items-center text-white text-sm">
                 <div class="flex items-center space-x-4">
-                    <img src="https://source.unsplash.com/random/?city,night" class="w-28 h-12" alt="logo_web">
+                    <img src="{{ asset('img/logo/logo_web.png') }}" class="w-28 h-12" alt="logo_web">
                     <p class="text-white text-3xl font-bold tracking-[10px] uppercase">SEKOLAHKLG</p>
                 </div>
                 <div class=" space-x-10">
@@ -168,24 +168,27 @@
                         @foreach ($banners as $banner)
                             @foreach ($banner->img_banner as $image)
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('/storage/banner-image/' . $image) }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg" alt="">
+                                    <img src="{{ asset('/storage/banner-image/' . $image) }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg brightness-50" alt="">
                                 </div>
                             @endforeach
                         @endforeach
                         @else
                             <div class="swiper-slide">
-                                <img src="{{ asset('img/Slider Image/img_slider1.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg" alt="">
+                                <img src="{{ asset('img/Slider Image/img_slider1.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg brightness-50" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('img/Slider Image/img_slider2.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg" alt="">
+                                <img src="{{ asset('img/Slider Image/img_slider2.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg brightness-50" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('img/Slider Image/img_slider3.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg" alt="">
+                                <img src="{{ asset('img/Slider Image/img_slider3.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg brightness-50" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('img/Slider Image/img_slider4.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg" alt="">
+                                <img src="{{ asset('img/Slider Image/img_slider4.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg brightness-50" alt="">
                             </div>
                         @endif
+                    </div>
+                    <div class="custom_text absolute top-1/4 -translate-x-1/2 left-1/2 z-50">
+                        <p class="text-3xl font-semibold text-white">"BERMAIN MENJADI INDONESIA"</p>
                     </div>
                     <div class="custom_btn absolute bottom-[10%] -translate-x-1/2 left-1/2 z-50">
                         <a href="#listBooks" class="py-3 px-20 bg-green-800/60 hover:bg-green-600/60 transition-colors duration-150 rounded-md text-white">Daftar Buku</a>
@@ -221,7 +224,7 @@
                 <div class="w-full h-auto p-8">
                     <div class="grid grid-cols-2 gap-2">
                         <div class="w-full h-full px-28">
-                            <img src="https://source.unsplash.com/random/?city,night" class="w-28 h-10" alt="logo">
+                            <img src="{{ asset('img/logo/logo_web.png') }}" class="w-28 h-10" alt="logo">
                             <div class="description font-light text-base space-y-4 mt-6 text-white not-italic">
                                 <p class="">
                                     <i class="fa-solid fa-city mr-4"></i>
