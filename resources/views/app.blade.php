@@ -253,7 +253,7 @@
                                 <a href="">
                                     <img src="{{ asset('img/icons/youtube.webp') }}" class="w-6 h-6" alt="yt icon">
                                 </a>
-                                <a href="">
+                                <a href="https://www.instagram.com/kampunglaligadget/" target="_blank">
                                     <img src="{{ asset('img/icons/instagram.webp') }}" class="w-6 h-6" alt="ig icon">
                                 </a>
                             </div>
