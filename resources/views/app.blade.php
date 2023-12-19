@@ -154,7 +154,7 @@
                             </li>
                         </ul>
                     </details> --}}
-                    <a href="https://wa.me/" class="">Hubungi Kami</a>
+                    <a href="https://wa.me/088214972668" class="" target="_blank">Hubungi Kami</a>
                 </div>
             </div>
         </div>
@@ -230,9 +230,9 @@
                                     <i class="fa-solid fa-city mr-4"></i>
                                     Kampung Lali Gadget
                                 </p>
-                                <a href="https://wa.me/+62217694140" class="tracking-widest block">
+                                <a href="https://wa.me/088214972668" target="_blank" class="tracking-widest block">
                                     <i class="fa-solid fa-phone mr-4"></i>
-                                    +62 21-7694140
+                                    +62 88-214972668
                                 </a>
                                 <p class="">
                                     <i class="fa-regular fa-clock mr-4"></i>
