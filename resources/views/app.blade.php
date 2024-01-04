@@ -27,6 +27,10 @@
             scroll-behavior: smooth;
             /* font-style: normal !important; */
         }
+
+        body {
+            overflow-x: hidden;
+        }
         /* Chrome, Safari and Opera */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -134,11 +138,11 @@
 <body>
     <div class="w-full flex justify-center py-2"></div>
     <nav>
-        <div class="w-full py-2.5 px-10 bg-green-800">
+        <div class="w-full py-2.5 md:px-10 px-2 bg-green-800">
             <div class="item_navbar w-full flex justify-between items-center text-white text-sm">
                 <div class="flex items-center space-x-4">
                     <img src="{{ asset('img/logo/logo_web.png') }}" class="w-28 h-12" alt="logo_web">
-                    <p class="text-white text-3xl font-bold tracking-[10px] uppercase">SEKOLAHKLG</p>
+                    <p class="text-white md:text-3xl text-xl font-bold md:tracking-[10px] tracking-[8px] uppercase">SEKOLAHKLG</p>
                 </div>
                 <div class="md:block hidden space-x-10">
                     <a href="{{ URL('/') }}">Beranda</a>
