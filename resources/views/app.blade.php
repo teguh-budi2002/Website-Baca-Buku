@@ -234,7 +234,7 @@
                                     <i class="fa-solid fa-city mr-4"></i>
                                     Kampung Lali Gadget
                                 </p>
-                                <a href="https://wa.me/088214972668" target="_blank" class="tracking-widest block">
+                                <a href="https://wa.me/6288214972668" target="_blank" class="tracking-widest block">
                                     <i class="fa-solid fa-phone mr-4"></i>
                                     +62 88-214972668
                                 </a>
