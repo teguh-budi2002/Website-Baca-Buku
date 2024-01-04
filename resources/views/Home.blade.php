@@ -158,7 +158,7 @@
             <p class="text-center text-4xl font-semibold text-slate-700">PROFILE WEBSITE</p>
             <div class="border border-solid border-slate-200 mt-5"></div>
             @if (isset($profile_web))
-            <div class="grid grid-cols-2 gap-5 mt-5">
+            <div class="grid md:grid-cols-2 grid-cols-1 gap-5 mt-5">
                 <div class="p-6 body_description">
                     {!! $profile_web->website_description !!}
                 </div>
@@ -195,12 +195,12 @@
                         @if ($key % 2 == 0)
                             <div class="w-full flex justify-start">
                                 <div class="books w-full h-full">
-                                    <div class="w-full flex items-start space-x-8">
+                                    <div class="w-full flex md:flex-row flex-col md:items-start items-center space-x-8">
                                         <div class="img">
                                             <img src="{{ asset('/storage/poster-buku/' . $book->image_book) }}" class="w-full max-w-sm h-[500px]" alt="image {{ $book->title }}">
                                         </div>
-                                        <div class="w-2/6 space-y-3">
-                                            <p class="text-slate-600 font-semibold text-xl uppercase not-italic">{{ $book->title }}</p>
+                                        <div class="md:w-2/6 w-full space-y-3 md:mt-0 mt-5">
+                                            <p class="text-slate-600 font-semibold text-xl uppercase not-italic md:text-left text-center">{{ $book->title }}</p>
                                             <p class="text-slate-500 font-light text-sm">{!! Illuminate\Support\Str::limit($book->description, 500, " ...<button onclick='my_modal_$key.showModal()' class='text-blue-500 hover:text-blue-400'>Baca selengkapnya</button>") !!}</p>
                                         </div>
                                     </div>
@@ -216,7 +216,7 @@
                                         </button>
                                     </form>
                                     <div class="w-full max-h-[600px] p-6 no-scrollbar overflow-y-scroll">
-                                        <div class="grid grid-cols-2 gap-10 mt-10">
+                                        <div class="grid md:grid-cols-2 grid-cols-1 gap-10 mt-10">
                                             <div class="cover_and_chapter">
                                                 <div class="cover">
                                                     <img src="{{ asset('/storage/poster-buku/' . $book->image_book) }}" class="w-full h-auto" alt="">
@@ -255,9 +255,9 @@
                         @else
                             <div class="w-full flex justify-end">
                                 <div class="books w-full h-full">
-                                    <div class="w-full flex items-start justify-end space-x-8">
-                                        <div class="space-y-3 w-2/6">
-                                            <p class="text-slate-600 font-semibold text-2xl text-end uppercase not-italic">{{ $book->title }}</p>
+                                    <div class="w-full flex md:flex-row flex-col-reverse md:items-start items-center md:justify-end space-x-8">
+                                        <div class="space-y-3 md:w-2/6 w-full md:mt-0 mt-5">
+                                            <p class="text-slate-600 font-semibold text-2xl md:text-end text-center uppercase not-italic">{{ $book->title }}</p>
                                             <p class="text-end text-slate-500 font-light text-sm">{!! Illuminate\Support\Str::limit($book->description, 500, " ...<button onclick='my_modal_$key.showModal()' class='text-blue-500 hover:text-blue-400'>Baca selengkapnya</button>") !!}</p>
                                         </div>
                                         <div class="img">
@@ -276,7 +276,7 @@
                                         </button>
                                     </form>
                                     <div class="w-full max-h-[600px] p-6 no-scrollbar overflow-y-scroll">
-                                        <div class="grid grid-cols-2 gap-10 mt-10">
+                                        <div class="grid md:grid-cols-2 grid-cols-1 gap-10 mt-10">
                                             <div class="cover_and_chapter">
                                                 <div class="cover">
                                                     <img src="{{ asset('/storage/poster-buku/' . $book->image_book) }}" class="w-full h-auto" alt="">

@@ -140,7 +140,7 @@
                     <img src="{{ asset('img/logo/logo_web.png') }}" class="w-28 h-12" alt="logo_web">
                     <p class="text-white text-3xl font-bold tracking-[10px] uppercase">SEKOLAHKLG</p>
                 </div>
-                <div class=" space-x-10">
+                <div class="md:block hidden space-x-10">
                     <a href="{{ URL('/') }}">Beranda</a>
                     <a href="#listBooks">Buku</a>
                     {{-- <details class="dropdown">
@@ -161,37 +161,37 @@
     </nav>
     <div class="carousel__main mt-5">
         <div class="w-full flex justify-center">
-            <div class="w-11/12 p-2">
+            <div class="w-11/12 h-auto p-2">
                 <div class="swiper relative">
                     <div class="swiper-wrapper">
                         @if (!empty($banners))
                         @foreach ($banners as $banner)
                             @foreach ($banner->img_banner as $image)
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('/storage/banner-image/' . $image) }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg brightness-50" alt="">
+                                    <img src="{{ asset('/storage/banner-image/' . $image) }}" class="w-full md:h-auto md:max-h-[600px] h-80 bg-cover rounded-lg brightness-50" alt="">
                                 </div>
                             @endforeach
                         @endforeach
                         @else
                             <div class="swiper-slide">
-                                <img src="{{ asset('img/Slider Image/img_slider1.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg brightness-50" alt="">
+                                <img src="{{ asset('img/Slider Image/img_slider1.jpeg') }}" class="w-full md:h-auto md:max-h-[600px] h-80 bg-cover rounded-lg brightness-50" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('img/Slider Image/img_slider2.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg brightness-50" alt="">
+                                <img src="{{ asset('img/Slider Image/img_slider2.jpeg') }}" class="w-full md:h-auto md:max-h-[600px] h-80 bg-cover rounded-lg brightness-50" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('img/Slider Image/img_slider3.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg brightness-50" alt="">
+                                <img src="{{ asset('img/Slider Image/img_slider3.jpeg') }}" class="w-full md:h-auto md:max-h-[600px] h-80 bg-cover rounded-lg brightness-50" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('img/Slider Image/img_slider4.jpeg') }}" class="w-full h-auto max-h-[600px] bg-cover rounded-lg brightness-50" alt="">
+                                <img src="{{ asset('img/Slider Image/img_slider4.jpeg') }}" class="w-full md:h-auto md:max-h-[600px] h-80 bg-cover rounded-lg brightness-50" alt="">
                             </div>
                         @endif
                     </div>
                     <div class="custom_text absolute top-1/4 -translate-x-1/2 left-1/2 z-50">
-                        <p class="text-3xl font-semibold text-white">"BERMAIN MENJADI INDONESIA"</p>
+                        <p class="md:text-3xl text-xl md:whitespace-normal whitespace-nowrap font-semibold text-white">"BERMAIN MENJADI INDONESIA"</p>
                     </div>
                     <div class="custom_btn absolute bottom-[10%] -translate-x-1/2 left-1/2 z-50">
-                        <a href="#listBooks" class="py-3 px-20 bg-green-800/60 hover:bg-green-600/60 transition-colors duration-150 rounded-md text-white">Daftar Buku</a>
+                        <a href="#listBooks" class="py-3 md:px-20 px-10 bg-green-800/60 hover:bg-green-600/60 transition-colors duration-150 rounded-md text-white">Daftar Buku</a>
                     </div>
                     {{-- <div class="swiper-pagination"></div> --}}
         
@@ -222,8 +222,8 @@
         <div class="bottom_footer mt-5 bg-green-800">
             <div class="flex justify-center">
                 <div class="w-full h-auto p-8">
-                    <div class="grid grid-cols-2 gap-2">
-                        <div class="w-full h-full px-28">
+                    <div class="grid md:grid-cols-2 grid-cols-1 md:gap-2 gap-10">
+                        <div class="w-full h-full md:px-28 px-0">
                             <img src="{{ asset('img/logo/logo_web.png') }}" class="w-28 h-10" alt="logo">
                             <div class="description font-light text-base space-y-4 mt-6 text-white not-italic">
                                 <p class="">
