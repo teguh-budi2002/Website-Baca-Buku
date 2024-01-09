@@ -44,7 +44,7 @@
                             </td>
                             <td>
                                 <button type="button" class="btn btn-outline-primary opacity-50" data-mdb-toggle="modal"
-                                    data-mdb-target="#modalBAB{{ $book->id }}">{{ App\Models\Chapter::count() }}
+                                    data-mdb-target="#modalBAB{{ $book->id }}">{{ $book->chapters->count() }}
                                     Bagian</button>
                                 <div class="modal fade" id="modalBAB{{ $book->id }}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -56,7 +56,7 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                @if ($book->chapters)
+                                                @if ($book->chapters->isNotEmpty())
                                                 <div class="row">
                                                     @foreach ($book->chapters as $chapter)
                                                     <div class="col-md-6">
@@ -78,9 +78,8 @@
                                                 </div>
                                                 @else
                                                 <div class="row">
-                                                    <div class="col-md-auto">
-                                                        <p class="text-danger fs-4 text-center">Bagian Belum Ditambahkan
-                                                            Dalam Buku Ini.</p>
+                                                    <div class="col-md-12">
+                                                        <p class="text-danger mx-auto fs-5 text-center">Tidak ada BAB dalam buku ini.</p>
                                                     </div>
                                                 </div>
                                                 @endif
