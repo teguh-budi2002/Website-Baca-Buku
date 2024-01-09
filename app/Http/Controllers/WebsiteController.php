@@ -19,7 +19,7 @@ class WebsiteController extends Controller
         ]);
     }
 
-    public function addorUpdateProfile(Request $request) { 
+    public function addorUpdateProfile(Request $request) {
         $validation = $request->validate([
             'main_image' => [Rule::requiredIf(function () use ($request) {
                 return is_null($request->old_main_image);
@@ -43,7 +43,7 @@ class WebsiteController extends Controller
             ProfileWebsite::updateOrCreate(
                 ['id' => $request->website_id],
                 [
-                    'main_image' => $file ? $filename : $request->old_main_image,
+                    'main_image' => $request->main_image ? $filename : $request->old_main_image,
                     'website_description' => $request->website_description
                 ]
             );

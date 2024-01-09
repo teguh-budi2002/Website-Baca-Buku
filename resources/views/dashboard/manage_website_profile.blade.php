@@ -40,7 +40,7 @@
                          <textarea name="website_description" id="website_desc" class="form-control">{{ old('website_description', $profile_web->website_description ?? '') }}</textarea>
                     </div>
                     <input type="hidden" name="old_main_image" value="{{ $profile_web->main_image ?? '' }}">
-                    <input type="hidden" name="website_id" value="{{ $profil_web->id ?? '' }}">
+                    <input type="hidden" name="website_id" value="{{ $profile_web->id ?? '' }}">
                     <div class="mt-4">
                         <button type="submit" class="btn btn-info">Update Profile</button>
                     </div>
