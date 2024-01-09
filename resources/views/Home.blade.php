@@ -224,11 +224,11 @@
                                                 <div class="chapter mt-8">
                                                     <p class="uppercase font-semibold not-italic text-xl">Permainan dalam buku mencakup:</p>
                                                     @if (isset($book) && isset($book->chapters))
+                                                    <ul class="list-decimal not-italic mt-6 ml-3">
                                                         @foreach ($book->chapters as $chapter)
-                                                        <ul class="list-decimal not-italic mt-6 ml-3">
                                                             <li>{{ $chapter->sub_title_of_chapter }}</li>
-                                                        </ul>
                                                         @endforeach
+                                                    </ul>
                                                     @else
                                                        <p class="not-italic text-center">Tidak Dicantumkan</p> 
                                                     @endif
