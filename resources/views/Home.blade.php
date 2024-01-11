@@ -245,7 +245,7 @@
                                                 </div>
                                                 @endif
                                                 <div class="text-center mt-8">
-                                                    <a href="https://wa.me/088214972668" target="_blank" class="block py-2 px-10 rounded-full bg-green-600 hover:bg-green-500 text-white not-italic">Hubungi Kami</a>
+                                                    <a href="https://wa.me/6288214972668" target="_blank" class="block py-2 px-10 rounded-full bg-green-600 hover:bg-green-500 text-white not-italic">Hubungi Kami</a>
                                                 </div>
                                             </div>
                                         </div>
